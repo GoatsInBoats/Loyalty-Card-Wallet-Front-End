@@ -1,0 +1,7 @@
+{
+  "name": "Loylalty-Card-Wallet-Front-End",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
