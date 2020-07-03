@@ -1,0 +1,26 @@
+<ion-header>
+</ion-header>
+
+<ion-content>
+  <h2 class = login-logo>Loyalty Card Wallet</h2>
+  <form class="login-button2" #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+    <ion-card>
+      <ion-input name="login" placeholder="Login" ngModel required #first="ngModel"></ion-input>
+    </ion-card>
+    <ion-card>
+      <ion-input type="password" placeholder="Password" name="password" ngModel></ion-input>
+    </ion-card>
+    <button class="md-raised">Submit</button>
+  </form>
+
+
+  <div class="register-button">
+    <ion-button class="btn" color="secondary" href="/register" router-direction="forward" >Register</ion-button>
+  </div>
+
+  <!--Delete in Feature-->
+  <ion-button expand="block" (click)="temporaryLogin('adam','adam123')">Enter Customer Page</ion-button>
+  <ion-button expand="block" (click)="temporaryLogin('ronaldo','ronaldo123')">Enter Manager Page</ion-button>
+  <ion-button expand="block" (click)="temporaryLogin('admin','admin123')">Enter Admin Page</ion-button>
+
+</ion-content>
