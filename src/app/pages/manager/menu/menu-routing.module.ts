@@ -7,7 +7,17 @@ const routes: Routes = [
   {
     path: '',
     component : MenuPage,
-    children: []
+    children: [
+      {
+        path: 'stat',
+        loadChildren: () => import('../stat/stat.module').then(m => m.StatPageModule)
+      },
+      {
+        path: '',
+        redirectTo: '/menu/stat',
+        pathMatch: 'full'
+      }
+    ]
   }
 ];
 

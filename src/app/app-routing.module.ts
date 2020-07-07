@@ -13,16 +13,19 @@ const routes: Routes = [
     loadChildren: () => import('./pages/public/login/login.module').then( m => m.LoginPageModule)
   },
 
+  // MANAGER COMPONENTS
+
+  {
+    path: 'menu',
+    loadChildren: () => import('./pages/manager/menu/menu.module').then( m => m.MenuPageModule)
+  },
+
   // Wild Card Protection
 
   {
     path: '**',
     redirectTo: '/login',
     pathMatch: 'full'
-  },
-  {
-    path: 'menu',
-    loadChildren: () => import('./pages/manager/menu/menu.module').then( m => m.MenuPageModule)
   },
 
 ];
