@@ -31,11 +31,21 @@ export class WalletPage implements OnInit {
         public companyService: CompanyService,
         public userService: UserService
     ) {
+        this.getCompanies();
     }
 
 
+    ionViewDidEnter(){
+        this.getCompanies();
+        this.userId = this.loginService.userId;
+        this.companies = this.companies1;
+        this.getUser();
+        this.ios = this.config.get('mode') === 'ios';
+    }
+
     ngOnInit() {
         this.getCompanies();
+        this.loginService.loginDismiss();
     }
 
     getCompanies() {
@@ -56,6 +66,12 @@ export class WalletPage implements OnInit {
                 return (item.companyName.toLowerCase().indexOf(val.toLowerCase()) > -1);
             });
         }
+    }
+
+    private getUser() {
+        this.userService.getUserById(this.userId).subscribe(
+            response => this.user = response
+        );
     }
 
 }
