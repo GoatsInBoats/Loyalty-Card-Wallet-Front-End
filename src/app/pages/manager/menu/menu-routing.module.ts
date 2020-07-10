@@ -13,6 +13,11 @@ const routes: Routes = [
         loadChildren: () => import('../stat/stat.module').then(m => m.StatPageModule)
       },
       {
+        path: 'stamp-card',
+        loadChildren: () => import('../stamp-card/stamp-card.module').then( m => m.StampCardPageModule)
+      },
+
+      {
         path: '',
         redirectTo: '/menu/stat',
         pathMatch: 'full'
