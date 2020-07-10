@@ -1,5 +1,4 @@
-/* tslint:disable:no-trailing-whitespace */
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Router, RouterEvent} from '@angular/router';
 import {LoginService} from '../../../providers/login.service';
 
@@ -15,6 +14,21 @@ export class MenuPage implements OnInit {
             title: 'Wallet',
             url: '/menu/wallet',
             icon: 'wallet'
+        },
+        {
+            title: 'Recent',
+            url: '/menu/promo',
+            icon: 'pricetags'
+        },
+        {
+            title: 'Map',
+            url: '/menu/map',
+            icon: 'map'
+        },
+        {
+            title: 'QR Code',
+            url: '/menu/qr',
+            icon: 'qr-code'
         }
     ];
 
@@ -23,13 +37,13 @@ export class MenuPage implements OnInit {
     constructor(private router: Router,
                 private loginService: LoginService) {
         this.router.events.subscribe((event: RouterEvent) => {
-            if (event && event.url) {
+            if (event && event.url){
                 this.selectedPath = event.url;
             }
         });
     }
 
-    logOut() {
+    logOut(){
         this.loginService.logout();
     }
 

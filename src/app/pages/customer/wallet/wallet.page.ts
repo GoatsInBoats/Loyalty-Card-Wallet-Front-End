@@ -1,11 +1,11 @@
-/* tslint:disable:no-trailing-whitespace */
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Config, IonList} from '@ionic/angular';
 import {CompanyService} from '../../../providers/company.service';
-import {UserService} from '../../../providers/user.service';
 import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {UserService} from '../../../providers/user.service';
 import {LoginService} from '../../../providers/login.service';
-import {any} from 'codelyzer/util/function';
+
 
 @Component({
     selector: 'app-wallet',
@@ -14,28 +14,30 @@ import {any} from 'codelyzer/util/function';
 })
 export class WalletPage implements OnInit {
 
-    @ViewChild('cardsList', {static: true}) cardsList: IonList;
+    @ViewChild('cardsList', {static: true}) cardList: IonList;
 
     ios: boolean;
     segment = 'myCards';
     groups: any = [];
+    private data: any;
+    companies: any[];
+    companies1: any[];
     user: any;
     userId: string;
-    companies: any[];
-    companies1: any;
+
 
     constructor(
         public config: Config,
-        public httpClient: HttpClient,
-        public loginService: LoginService,
-        public companyService: CompanyService,
-        public userService: UserService
+        public companiesService: CompanyService,
+        public userService: UserService,
+        private http: HttpClient,
+        private loginService: LoginService
     ) {
         this.getCompanies();
     }
 
-
-    ionViewDidEnter(){
+    ionViewDidEnter() {
+        this.loginService.loginDismiss();
         this.getCompanies();
         this.userId = this.loginService.userId;
         this.companies = this.companies1;
@@ -45,11 +47,13 @@ export class WalletPage implements OnInit {
 
     ngOnInit() {
         this.getCompanies();
-        this.loginService.loginDismiss();
+        // this.companies = this.companies1; //must be
+        // this.ios = this.config.get('mode') === 'ios';
     }
 
+
     getCompanies() {
-        this.companyService.getCompanies().subscribe(
+        this.companiesService.getCompanies().subscribe(
             response => {
                 this.companies1 = response;
                 this.companies = response;
@@ -57,16 +61,6 @@ export class WalletPage implements OnInit {
         );
     }
 
-    getItems(ev: any) {
-        this.companies = this.companies1;
-        const val = ev.target.value;
-      // tslint:disable-next-line:triple-equals
-        if (val && val.trim() != '') {
-            this.companies = this.companies.filter((item) => {
-                return (item.companyName.toLowerCase().indexOf(val.toLowerCase()) > -1);
-            });
-        }
-    }
 
     private getUser() {
         this.userService.getUserById(this.userId).subscribe(
@@ -74,4 +68,17 @@ export class WalletPage implements OnInit {
         );
     }
 
+    getItems(ev: any) {
+        this.companies = this.companies1;
+
+        // set val to the value of the searchbar
+        const val = ev.target.value;
+
+        // if the value is an empty string don't filter the items
+        if (val && val.trim() != '') {
+            this.companies = this.companies.filter((item) => {
+                return (item.companyName.toLowerCase().indexOf(val.toLowerCase()) > -1);
+            });
+        }
+    }
 }
