@@ -33,17 +33,8 @@ const routes: Routes = [
   },
   {
     path: 'card-details',
-    loadChildren: () => import('./customer/card-details/card-details.module').then( m => m.CardDetailsPageModule)
-  },
-  {
-    path: 'card-details',
     loadChildren: () => import('./pages/customer/card-details/card-details.module').then( m => m.CardDetailsPageModule)
   },
-  {
-    path: 'card-details',
-    loadChildren: () => import('./pages/customer/card-details/card-details.module').then( m => m.CardDetailsPageModule)
-  },
-
 ];
 @NgModule({
   imports: [

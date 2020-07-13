@@ -14,6 +14,8 @@ import {LoginService} from "./providers/login.service";
 import {HttpClientModule} from "@angular/common/http";
 import {CompanyService} from "./providers/company.service";
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
+import {BarcodeScanner} from "@ionic-native/barcode-scanner/ngx";
+import {Base64ToGallery} from "@ionic-native/base64-to-gallery/ngx";
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +25,8 @@ import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
     StatusBar,
     SplashScreen,
     {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
-
+    BarcodeScanner,
+    Base64ToGallery,
     HttpClientModule,
     LoginService,
     CompanyService,
