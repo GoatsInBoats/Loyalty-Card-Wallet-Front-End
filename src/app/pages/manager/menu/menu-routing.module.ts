@@ -17,12 +17,13 @@ const routes: Routes = [
         loadChildren: () => import('../stamp-card/stamp-card.module').then( m => m.StampCardPageModule)
       },
       {
-        path: 'accountM',
-        loadChildren: () => import('../account/account.module').then(m => m.AccountPageModule)
-      },
-      {
         path: 'Qr',
         loadChildren: () => import('../qr/qr.module').then(m => m.QrPageModule)
+      },
+
+      {
+        path: 'accountM',
+        loadChildren: () => import('../account/account.module').then(m => m.AccountPageModule)
       },
       {
         path: '',
