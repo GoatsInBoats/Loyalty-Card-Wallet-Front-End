@@ -6,6 +6,7 @@ import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment';
 import {ToastController} from "@ionic/angular";
 
+
 @Injectable({
     providedIn: 'root'
 })
@@ -40,37 +41,43 @@ export class CompanyService {
 
     getCountOfUseCompanyStampCard(companyId) {
         this.getCompanyUserById(companyId).toPromise().then(data => {
-            this.stampCardId = data['userSpecifics']['company']['stampCard']['id'].toString()
+            this.stampCardId = data['userSpecifics']['company']['stampCard']['id'].toString();
         }).finally(() => {
             this.stampCardsProgresses = this.getStampCardsProgressesById();
         }).finally(() => {
-            this.print(this.stampCardId)
+            this.print(this.stampCardId);
         }).finally(() => {
             // setTimeout(() => {
             console.log(this._countStampCardsProgresses);
             // }, 1000)
         });
+    }
+
+    getCompanyUserById(companyId): Observable<any> {
+        const header = {
+            headers: new HttpHeaders()
+                .set('Authorization', `${this.loginService.getToken()}`)
+        };
+        return this.http.get<any>(`${environment.apiUrl}/api/users/${companyId}`, header);
 
     }
 
-
-    print(stampCardId){
+    print(stampCardId) {
         let count: any = ' ';
         this.stampCardsProgresses.subscribe(res => {
             // console.log(res)
             // res.map(console.log, console)
             let result = 0;
             res.forEach(data => {
-                if (stampCardId == data['stampCard']['id']){
+                if (stampCardId == data['stampCard']['id']) {
                     result = result + 1;
                 }
-            })
+            });
             count = result;
             // setTimeout(() => {
 
             this._countStampCardsProgresses = result.toString();
             // }, 1000)
-
 
         }).finally(()=>{
             this._countStampCardsProgresses = count.toString()
@@ -85,7 +92,6 @@ export class CompanyService {
                 .set('Authorization', `${this.loginService.getToken()}`)
         }
         return this.http.get<any>(`${environment.apiUrl}/api/users/${companyId}`, header)
-
     }
 
     getCompanyById(companyId): Observable<any> {
@@ -101,8 +107,17 @@ export class CompanyService {
         const header = {
             headers: new HttpHeaders()
                 .set('Authorization', `${this.loginService.getToken()}`)
-        }
-        return this.http.get<any>(`${environment.apiUrl}/api/stampcards-progresses`, header)
+        };
+        return this.http.get<any>(`${environment.apiUrl}/api/stampcards-progresses`, header);
+    }
+
+    getCompanyById(id): Observable<any> {
+        const header = {
+            headers: new HttpHeaders()
+                .set('Authorization', `${this.loginService.getToken()}`)
+        };
+        return this.http.get<any>(`${environment.apiUrl}/api/companies/${id}`, header);
+
     }
 
     addStampForUser(customerId: string, stampCardId: string, userType: string){
