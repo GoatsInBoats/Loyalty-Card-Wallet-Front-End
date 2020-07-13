@@ -13,6 +13,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/public/login/login.module').then( m => m.LoginPageModule)
   },
 
+  {
+    path: 'menu',
+    loadChildren: () => import('./pages/customer/menu/menu.module').then( m => m.MenuPageModule)
+  },
+
   // MANAGER COMPONENTS
 
   {
@@ -26,10 +31,6 @@ const routes: Routes = [
     path: '**',
     redirectTo: '/login',
     pathMatch: 'full'
-  },
-  {
-    path: 'menu',
-    loadChildren: () => import('./pages/customer/menu/menu.module').then( m => m.MenuPageModule)
   },
   {
     path: 'card-details',
