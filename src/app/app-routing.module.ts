@@ -31,7 +31,10 @@ const routes: Routes = [
     path: 'menu',
     loadChildren: () => import('./pages/customer/menu/menu.module').then( m => m.MenuPageModule)
   },
-
+  {
+    path: 'card-details',
+    loadChildren: () => import('./pages/customer/card-details/card-details.module').then( m => m.CardDetailsPageModule)
+  },
 ];
 @NgModule({
   imports: [
