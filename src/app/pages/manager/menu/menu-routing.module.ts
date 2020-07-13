@@ -20,9 +20,10 @@ const routes: Routes = [
         path: 'Qr',
         loadChildren: () => import('../qr/qr.module').then(m => m.QrPageModule)
       },
+
       {
-        path: 'Qr',
-        loadChildren: () => import('../qr/qr.module').then(m => m.QrPageModule)
+        path: 'accountM',
+        loadChildren: () => import('../account/account.module').then(m => m.AccountPageModule)
       },
       {
         path: '',

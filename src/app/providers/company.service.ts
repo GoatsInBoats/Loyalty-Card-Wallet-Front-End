@@ -86,13 +86,7 @@ export class CompanyService {
 
     }
 
-    getCompanyUserById(companyId): Observable<any> {
-        const header = {
-            headers: new HttpHeaders()
-                .set('Authorization', `${this.loginService.getToken()}`)
-        }
-        return this.http.get<any>(`${environment.apiUrl}/api/users/${companyId}`, header)
-    }
+
 
     getCompanyById(companyId): Observable<any> {
         const header = {
@@ -111,14 +105,6 @@ export class CompanyService {
         return this.http.get<any>(`${environment.apiUrl}/api/stampcards-progresses`, header);
     }
 
-    getCompanyById(id): Observable<any> {
-        const header = {
-            headers: new HttpHeaders()
-                .set('Authorization', `${this.loginService.getToken()}`)
-        };
-        return this.http.get<any>(`${environment.apiUrl}/api/companies/${id}`, header);
-
-    }
 
     addStampForUser(customerId: string, stampCardId: string, userType: string){
         if (userType == 'companyID:'){
