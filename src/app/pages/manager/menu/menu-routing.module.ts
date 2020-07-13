@@ -16,7 +16,10 @@ const routes: Routes = [
         path: 'stamp-card',
         loadChildren: () => import('../stamp-card/stamp-card.module').then( m => m.StampCardPageModule)
       },
-
+      {
+        path: 'accountM',
+        loadChildren: () => import('../account/account.module').then(m => m.AccountPageModule)
+      },
       {
         path: '',
         redirectTo: '/menu/stat',
