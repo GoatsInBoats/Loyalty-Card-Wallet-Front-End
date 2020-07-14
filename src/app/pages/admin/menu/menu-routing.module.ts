@@ -9,8 +9,12 @@ const routes: Routes = [
     component: MenuPage,
     children: [
       {
+        path: 'statsA',
+        loadChildren: () => import('../stat/stat.module').then(m => m.StatPageModule)
+      },
+      {
         path: '',
-        redirectTo: '/menu/stats',
+        redirectTo: '/menu/statsA',
         pathMatch: 'full'
       }
     ]
