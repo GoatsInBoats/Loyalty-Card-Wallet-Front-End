@@ -14,11 +14,11 @@ const routes: Routes = [
                 loadChildren: () => import('../wallet/wallet.module').then(m => m.WalletPageModule),
                 canActivate: [AuthGuard]
             },
-            // {
-            //     path: 'promo',
-            //     loadChildren: () => import('../promo/promo.module').then(m => m.PromoPageModule),
-            //     canActivate: [AuthGuard]
-            // },
+            {
+                path: 'promo',
+                loadChildren: () => import('../promo/promo.module').then(m => m.PromoPageModule),
+                canActivate: [AuthGuard]
+            },
             // {
             //     path: 'map',
             //     loadChildren: () => import('../map/map.module').then(m => m.MapPageModule),
