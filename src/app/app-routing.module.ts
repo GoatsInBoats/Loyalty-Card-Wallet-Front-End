@@ -28,16 +28,19 @@ const routes: Routes = [
     loadChildren: () => import('./pages/manager/menu/menu.module').then( m => m.MenuPageModule)
   },
 
+  // ADMIN COMPONENTS
+
+  {
+    path: 'menu',
+    loadChildren: () => import('./pages/admin/menu/menu.module').then( m => m.MenuPageModule)
+  },
+
   // Wild Card Protection
 
   {
     path: '**',
     redirectTo: '/login',
     pathMatch: 'full'
-  },
-  {
-    path: 'promo',
-    loadChildren: () => import('./pages/customer/promo/promo.module').then( m => m.PromoPageModule)
   }
 ];
 @NgModule({
