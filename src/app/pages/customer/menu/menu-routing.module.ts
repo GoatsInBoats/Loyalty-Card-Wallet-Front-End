@@ -24,11 +24,11 @@ const routes: Routes = [
             //     loadChildren: () => import('../map/map.module').then(m => m.MapPageModule),
             //     canActivate: [AuthGuard]
             // },
-            // {
-            //     path: 'qr',
-            //     loadChildren: () => import('../qr/qr.module').then(m => m.QrPageModule),
-            //     canActivate: [AuthGuard]
-            // },
+            {
+                path: 'qr',
+                loadChildren: () => import('../qr/qr.module').then(m => m.QrPageModule),
+                canActivate: [AuthGuard]
+            },
             // {
             //     path: 'account',
             //     loadChildren: () => import('../account/account.module').then(m => m.AccountPageModule)
