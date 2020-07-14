@@ -12,7 +12,10 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./pages/public/login/login.module').then( m => m.LoginPageModule)
   },
-
+  {
+    path: 'card-details/:companyId',
+    loadChildren: () => import('./pages/customer/card-details/card-details.module').then( m => m.CardDetailsPageModule)
+  },
   {
     path: 'menu',
     loadChildren: () => import('./pages/customer/menu/menu.module').then( m => m.MenuPageModule)
@@ -31,11 +34,7 @@ const routes: Routes = [
     path: '**',
     redirectTo: '/login',
     pathMatch: 'full'
-  },
-  {
-    path: 'card-details',
-    loadChildren: () => import('./pages/customer/card-details/card-details.module').then( m => m.CardDetailsPageModule)
-  },
+  }
 ];
 @NgModule({
   imports: [
