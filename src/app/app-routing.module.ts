@@ -34,6 +34,10 @@ const routes: Routes = [
     path: '**',
     redirectTo: '/login',
     pathMatch: 'full'
+  },
+  {
+    path: 'promo',
+    loadChildren: () => import('./pages/customer/promo/promo.module').then( m => m.PromoPageModule)
   }
 ];
 @NgModule({
