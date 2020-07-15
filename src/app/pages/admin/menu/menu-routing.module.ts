@@ -13,6 +13,10 @@ const routes: Routes = [
         loadChildren: () => import('../stat/stat.module').then(m => m.StatPageModule)
       },
       {
+        path: 'view',
+        loadChildren: () => import('../view/view.module').then(m => m.ViewPageModule)
+      },
+      {
         path: '',
         redirectTo: '/menu/statsA',
         pathMatch: 'full'
