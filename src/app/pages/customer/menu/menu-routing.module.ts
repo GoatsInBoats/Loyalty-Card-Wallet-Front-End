@@ -19,11 +19,11 @@ const routes: Routes = [
                 loadChildren: () => import('../promo/promo.module').then(m => m.PromoPageModule),
                 canActivate: [AuthGuard]
             },
-            // {
-            //     path: 'map',
-            //     loadChildren: () => import('../map/map.module').then(m => m.MapPageModule),
-            //     canActivate: [AuthGuard]
-            // },
+            {
+                path: 'map',
+                loadChildren: () => import('../map/map.module').then(m => m.MapPageModule),
+                canActivate: [AuthGuard]
+            },
             {
                 path: 'qr',
                 loadChildren: () => import('../qr/qr.module').then(m => m.QrPageModule),
