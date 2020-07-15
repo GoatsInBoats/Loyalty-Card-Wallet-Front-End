@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {AuthGuard} from './providers/auth.guard';
 
 const routes: Routes = [
@@ -34,10 +34,6 @@ const routes: Routes = [
     path: '**',
     redirectTo: '/login',
     pathMatch: 'full'
-  },
-  {
-    path: 'promo',
-    loadChildren: () => import('./pages/customer/promo/promo.module').then( m => m.PromoPageModule)
   }
 ];
 @NgModule({
