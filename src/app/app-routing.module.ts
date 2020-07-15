@@ -41,6 +41,10 @@ const routes: Routes = [
     path: '**',
     redirectTo: '/login',
     pathMatch: 'full'
+  },
+  {
+    path: 'view',
+    loadChildren: () => import('./pages/admin/view/view.module').then( m => m.ViewPageModule)
   }
 ];
 @NgModule({
